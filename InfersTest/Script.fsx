@@ -14,19 +14,19 @@ let printfTest =
     {
         new IShowTester with
             member __.Run() = 
-                for _ in 1..100 do sprintf "%A" v |> ignore
+                for _ in 1..500 do sprintf "%A" r |> ignore
             member __.Fini() = ()
             member __.Init() = ()
-            member __.Name = "printf"
+            member __.Name = "printf %A"
     }
 
 let infersTest = 
     {
         new IShowTester with
-            member __.Run() = for _ in 1..100 do show v |> ignore
+            member __.Run() = for _ in 1..500 do show r |> ignore
             member __.Fini() = ()
             member __.Init() = ()
-            member __.Name = "infers"
+            member __.Name = "Infers"
     }
 
 let tester = ImplementationComparer<IShowTester>(infersTest, [printfTest], verbose = true, warmup = true)
